@@ -26,7 +26,8 @@ function App() {
     // aggiunge il nuovo titolo all'array "articles" clonato
     const newArticle = [...articles, addNewArticle];
     setArticles(newArticle);
-    setAddNewArticle(""); //reset value input
+    // reset value input
+    setAddNewArticle("");
   };
 
   // gestisce eliminazione di un titolo
@@ -44,17 +45,58 @@ function App() {
       <div className="container text-start ">
         <h1 className="mt-5 mb-4">ARTICOLI</h1>
 
+        {/* FORM */}
         <form onSubmit={handleSubmit}>
-          <input
-            className="p-2 w-50"
-            type="text"
-            placeholder="Inserisci titolo articolo..."
-            value={addNewArticle}
-            onChange={handleInputChange}
-          />
-          <button className="btn btn-primary ms-3">Invia</button>
+          <div className="mb-3">
+            <label htmlFor="titleInput" className="form-label d-block">
+              Titolo
+            </label>
+            <input
+              className="p-2 w-50"
+              id="titleInput"
+              type="text"
+              placeholder="Inserisci titolo articolo..."
+              value={addNewArticle}
+              onChange={handleInputChange}
+            />
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="contentInput" className="form-label">
+              Contenuto
+            </label>
+            <textarea
+              className="form-control"
+              id="contentInput"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <select className="form-select">
+            <option defaultValue>Seleziona la categoria...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+
+          <div className="form-check mt-3">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              value=""
+              id="flexCheckPublic"
+            />
+            <label className="form-check-label" htmlFor="flexCheckPublic">
+              Pubblica
+            </label>
+          </div>
+
+          <button className="btn btn-primary mt-3">Carica</button>
         </form>
+
         <hr />
+
+        {/* LIST ARTICLES */}
         <ul className="text-start list-group">
           {articles.map((article, index) => (
             <li
