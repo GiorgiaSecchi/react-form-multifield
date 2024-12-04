@@ -145,6 +145,8 @@ function App() {
             >
               <h3>{article.title}</h3>
               <p>{article.content}</p>
+              <p>Categoria: {article.category}</p>
+              <p>Pubblicato: {article.isPublic === true ? "Si" : "No"}</p>
               <button
                 className="btn btn-outline-danger btn-sm "
                 onClick={() => handleRemoveArticle(index)}
