@@ -22,9 +22,14 @@ function App() {
 
   // funzione unica per gestire l'evento onChange del form
   const handleFormData = (event) => {
+    const value =
+      event.target.type === "checkbox"
+        ? event.target.checked
+        : event.target.value;
+
     setFormData((formData) => ({
       ...formData,
-      [e.target.name]: e.target.value,
+      [event.target.name]: value,
     }));
   };
 
