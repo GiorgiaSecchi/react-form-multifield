@@ -151,7 +151,7 @@ function App() {
               className="list-group-item d-flex flex-column align-items-start py-4"
             >
               <h3>{article.title}</h3>
-              <p>{article.content}</p>
+              <p className="fst-italic">{article.content}</p>
               <p>Categoria: {article.category}</p>
               <p>Pubblicato: {article.isPublic === true ? "Si" : "No"}</p>
               <button
