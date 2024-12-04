@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   // Stato iniziale Array "articles" (vuoto)
@@ -35,6 +35,13 @@ function App() {
     setFormData(newformData);
     // console.log(newformData);
   };
+
+  // useEffect mostra alert quando so clicca su checkbox per pubblicare articolo
+  useEffect(() => {
+    if (formData.isPublic) {
+      alert("L'articolo verrà pubblicato una volta caricato!");
+    }
+  }, [formData.isPublic]);
 
   // gestisce l'invio nuovi titoli dal form
   const handleSubmit = (event) => {
@@ -123,7 +130,7 @@ function App() {
               type="checkbox"
               id="flexCheckPublic"
               name="isPublic"
-              checked={formData.isPublished}
+              checked={formData.isPublic}
               onChange={handleFormData}
             />
             <label className="form-check-label" htmlFor="flexCheckPublic">
@@ -141,7 +148,7 @@ function App() {
           {articles.map((article, index) => (
             <li
               key={index}
-              className="list-group-item d-flex flex-column align-items-start"
+              className="list-group-item d-flex flex-column align-items-start py-4"
             >
               <h3>{article.title}</h3>
               <p>{article.content}</p>
