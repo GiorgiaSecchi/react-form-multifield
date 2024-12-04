@@ -141,12 +141,12 @@ function App() {
           {articles.map((article, index) => (
             <li
               key={index}
-              className="list-group-item d-flex justify-content-between"
+              className="list-group-item d-flex flex-column align-items-start"
             >
               <h3>{article.title}</h3>
               <p>{article.content}</p>
               <button
-                className="btn btn-outline-danger btn-sm ms-3 "
+                className="btn btn-outline-danger btn-sm "
                 onClick={() => handleRemoveArticle(index)}
               >
                 Elimina
