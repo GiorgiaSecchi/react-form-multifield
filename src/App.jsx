@@ -4,8 +4,16 @@ function App() {
   // Stato iniziale Array "articles" (vuoto)
   const [articles, setArticles] = useState([]);
 
-  // Stato iniziale dell'input
-  const [addNewArticle, setAddNewArticle] = useState("");
+  //// Stato iniziale dell'input
+  //// const [addNewArticle, setAddNewArticle] = useState("");
+
+  // unico oggetto per gestire tutti dati del form
+  const [formData, setFormData] = useState({
+    title: "",
+    content: "",
+    category: "",
+    isPublic: false,
+  });
 
   // gestisce nuovi titoli inseriti nel input (value)
   const handleInputChange = (event) => {
