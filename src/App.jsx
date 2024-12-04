@@ -61,7 +61,7 @@ function App() {
             />
           </div>
 
-          <div className="mb-3">
+          <div className="mt-4">
             <label htmlFor="contentInput" className="form-label">
               Contenuto
             </label>
@@ -72,14 +72,14 @@ function App() {
             ></textarea>
           </div>
 
-          <select className="form-select">
+          <select className="form-select mt-4">
             <option defaultValue>Seleziona la categoria...</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
           </select>
 
-          <div className="form-check mt-3">
+          <div className="form-check mt-4">
             <input
               className="form-check-input"
               type="checkbox"
@@ -91,7 +91,7 @@ function App() {
             </label>
           </div>
 
-          <button className="btn btn-primary mt-3">Carica</button>
+          <button className="btn btn-primary mt-4">Carica</button>
         </form>
 
         <hr />
