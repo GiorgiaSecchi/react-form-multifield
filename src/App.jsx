@@ -15,9 +15,17 @@ function App() {
     isPublic: false,
   });
 
-  // gestisce nuovi titoli inseriti nel input (value)
-  const handleInputChange = (event) => {
-    setAddNewArticle(event.target.value);
+  //// gestisce nuovi titoli inseriti nel input (value)
+  //// const handleInputChange = (event) => {
+  ////  setAddNewArticle(event.target.value);
+  //// };
+
+  // funzione unica per gestire l'evento onChange del form
+  const handleFormData = (event) => {
+    setFormData((formData) => ({
+      ...formData,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   // gestisce l'invio nuovi titoli dal form
@@ -64,8 +72,9 @@ function App() {
               id="titleInput"
               type="text"
               placeholder="Inserisci titolo articolo..."
-              value={addNewArticle}
-              onChange={handleInputChange}
+              name="title"
+              value={formData.title}
+              onChange={handleFormData}
             />
           </div>
 
@@ -77,10 +86,18 @@ function App() {
               className="form-control"
               id="contentInput"
               rows="3"
+              name="content"
+              value={formData.content}
+              onChange={handleFormData}
             ></textarea>
           </div>
 
-          <select className="form-select mt-4">
+          <select
+            className="form-select mt-4"
+            name="category"
+            value={formData.category}
+            onChange={handleFormData}
+          >
             <option defaultValue>Seleziona la categoria...</option>
             <option value="1">One</option>
             <option value="2">Two</option>
@@ -91,8 +108,10 @@ function App() {
             <input
               className="form-check-input"
               type="checkbox"
-              value=""
               id="flexCheckPublic"
+              name="isPublic"
+              checked={formData.isPublished}
+              onChange={handleFormData}
             />
             <label className="form-check-label" htmlFor="flexCheckPublic">
               Pubblica
