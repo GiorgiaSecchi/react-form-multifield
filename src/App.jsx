@@ -27,10 +27,13 @@ function App() {
         ? event.target.checked
         : event.target.value;
 
-    setFormData((formData) => ({
+    const newformData = {
       ...formData,
       [event.target.name]: value,
-    }));
+    };
+
+    setFormData(newformData);
+    // console.log(newformData);
   };
 
   // gestisce l'invio nuovi titoli dal form
