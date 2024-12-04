@@ -40,18 +40,23 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (addNewArticle === "") {
-      alert("Devi inserire un titolo da aggiungere!");
+    if (!formData.title || !formData.content) {
+      alert("Le sezioni titolo e contenuto sono obbligatorie!");
       return;
     }
 
-    console.log(`L'articolo "${addNewArticle}" è stato aggiunto!`);
+    console.log(`L'articolo "${formData.title}" è stato aggiunto!`);
 
     // aggiunge il nuovo titolo all'array "articles" clonato
-    const newArticle = [...articles, addNewArticle];
+    const newArticle = [...articles, formData];
     setArticles(newArticle);
     // reset value input
-    setAddNewArticle("");
+    setFormData({
+      title: "",
+      content: "",
+      category: "",
+      isPublic: false,
+    });
   };
 
   // gestisce eliminazione di un titolo
@@ -138,7 +143,8 @@ function App() {
               key={index}
               className="list-group-item d-flex justify-content-between"
             >
-              {article}
+              <h3>{article.title}</h3>
+              <p>{article.content}</p>
               <button
                 className="btn btn-outline-danger btn-sm ms-3 "
                 onClick={() => handleRemoveArticle(index)}
